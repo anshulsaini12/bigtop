@@ -1,0 +1,17 @@
+set -ex
+
+. `dirname $0`/bigtop.bom
+
+mvn clean install -DskipTests -pl \!presto-docs \
+        -Dhadoop.version=${HADOOP_VERSION} \
+        -Dhive.version=${HIVE_VERSION} \
+        -Dkafka.version=${KAFKA_VERSION} \
+        -Dzookeeper.version=${ZOOKEEPER_VERSION}
+
+mkdir build
+
+for f in presto-server/target/presto*.tar.gz
+do
+  tar -C build -xf ${f}
+done
+

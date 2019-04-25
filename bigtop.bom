@@ -389,6 +389,18 @@ bigtop {
       url     { site = "https://github.com/brianfrankcooper/YCSB/archive"
                 archive = site }
     }
+    'presto' {
+      name    = 'presto'
+      relNotes = 'Apache Presto'
+      version { base = '0.218'; pkg = base; release = 1 }
+      tarball { destination = "$name-${version.base}.tar.gz"
+                source      = "${version.base}.tar.gz" }
+      url     { site = "https://github.com/prestodb/presto/archive"
+                archive = site }
+      git {     repo  = "https://github.com/anshulsaini12/presto.git"
+         ref   = "hotfix-0.218" 
+	 dir   = "${name}-${version.base}-src"}
+    }
     'hama' {
       name    = 'hama'
       relNotes = 'Apache Hama'
